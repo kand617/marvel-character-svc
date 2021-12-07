@@ -38,7 +38,6 @@ describe('MarvelService', () => {
   it('should be defined', async () => {
     expect(service).toBeDefined()
     expect(true).toBe(true)
-    service.getCharacters(null)
   })
 
   describe('.getCharacters', () => {

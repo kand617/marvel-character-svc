@@ -8,7 +8,6 @@ export class CharacterTaskService {
 
   @Interval(60000)
   handleInterval() {
-    console.log('sdtasta')
     this.svc.init()
   }
 }
