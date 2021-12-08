@@ -18,6 +18,12 @@ MARVEL_PRIVATE_KEY=FILL_ME
 MARVEL_PUBLIC_KEY=FILL_ME
 ```
 
+
+## API Documentation
+API Documentation can be found in OpenAPI spec located in the root
+`oas.yml`
+
+
 ## Running the app
 
 ```bash
