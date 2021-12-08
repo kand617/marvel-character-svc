@@ -6,7 +6,7 @@ import { CharactersService } from '../characters.service'
 export class CharacterTaskService {
   constructor(private readonly svc: CharactersService) {}
 
-  @Interval(60000)
+  @Interval('CharacterRefresh', 60000)
   handleInterval() {
     this.svc.init()
   }

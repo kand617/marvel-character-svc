@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import * as moment from 'moment'
 import { MarvelService } from '../vendor/marvel/marvel.service'
-import { VendorModule } from '../vendor/vendor.module'
 import { CharactersService } from './characters.service'
 
 const mockCharacters = [

@@ -61,12 +61,6 @@ export class CharactersService {
     return this.db.get(id)
   }
 
-  public getCharacters(): Character[] {
-    // TODO: FIX this memory usage
-    const itms = Array.from(this.db.values())
-    return itms
-  }
-
   public getCharacterIds(): number[] {
     // TODO: FIX this memory usage
     const itms = Array.from(this.db.keys())
