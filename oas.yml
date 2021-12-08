@@ -1,0 +1,121 @@
+openapi: 3.0.1
+info:
+  title: Marvel Character API (Wrapper) 
+  description: 'This is for the wrapper for the characters API from marvel'
+  version: 1.0.0
+servers:
+- url: http://localhost:8080
+tags:
+- name: characters
+  description: Everything about your characters
+paths:
+ 
+  /characters/{characterId}:
+    get:
+      tags:
+      - characters
+      summary: Find characters by ID
+      description: Returns a single character based on ID
+      operationId: getCharacterById
+      parameters:
+      - name: characterId
+        in: path
+        description: ID of character to return
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+        400:
+          description: Validation Errors
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+              example:
+                statusCode: 400
+                message: "Validation failed (numeric string is expected)"
+                error: "Bad Request"
+        404:
+          description: Character not found
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+              example:
+                statusCode: 404
+                message: "A character with 101133413434343 does not exist"
+                error: "Not Found"
+        500:
+          description: Server Error
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+              example:
+                statusCode: 500
+                message: "An unexpected error has occurred"
+                error: "Server Error"
+  
+  /characters:
+    get:
+      tags:
+        - characters
+      summary: List character Ids
+      description: returns a list of character Ids
+      operationId: getCharacters
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+               type: array
+               items: 
+                type: number
+              example: [1011334,1017100,1009144,1010699,1009146,1016823]
+        500:
+          description: Server Error
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+              example:
+                statusCode: 500
+                message: "An unexpected error has occurred"
+                error: "Server Error"
+      
+components:
+  schemas:
+    Character:
+      required:
+      - id
+      - name
+      - description
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          example: Mr. X
+        description:
+          type: string
+          example: Back story of Mr. X
+    ApiResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        message:
+          type: string
+        error:
+          type: string
