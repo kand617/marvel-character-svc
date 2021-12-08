@@ -6,6 +6,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   const svc = app.get<CharactersService>(CharactersService)
   await svc.init()
-  await app.listen(3000)
+  await app.listen(8080)
 }
 bootstrap()
